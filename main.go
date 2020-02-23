@@ -1,8 +1,10 @@
+package main
+
 import (
 	"fmt"
 	"os"
 	"os/user"
-	"../evaluate"
+	"compiler/evaluate"
 
 )
 

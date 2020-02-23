@@ -1,15 +1,17 @@
+package repl
+
 import (
 	"bufio"
 	"fmt"
 	"io"
-	"../grammar"
-	"../lexer"
+	"compiler/grammar"
+	"compiler/lexer"
 )
 
 const PROMPT = "<meow>^..^<meow>"
 //helper function for  input and output values 
 func Start(in io.Reader, out io.Writer){
-	scanner := bufion.Scanner(in)
+	scanner := bufio.NewScanner(in)
 
 	for{
 		fmt.Printf(PROMPT)

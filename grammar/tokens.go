@@ -1,3 +1,4 @@
+package token
 
 type TokenType string
 
@@ -76,17 +77,16 @@ const (
 )
 
 var keywords = map[string]TokenType{
-	"fn": FUNCTION
-	"let":LET
-	"if":IF
-	"else":ELSE
-	"while":WHILE
-	"for":FOR
-	"foreach":FOREACH
-	"true":TRUE
-	"false":FALSE
-	"return":RETURN
-}
+	"fn": FUNCTION,
+	"let":LET,
+	"if":IF,
+	"else":ELSE,
+	"while":WHILE,
+	"for":FOR,
+	"foreach":FOREACH,
+	"true":TRUE,
+	"false":FALSE,
+	"return":RETURN}
 
 //check where a keyword is a token or return identifier if token not present
 func LookUpIdent(ident string) TokenType{
