@@ -24,7 +24,7 @@ func (lexer *Lexer) NextToken() token.Token{
 	
 	var tok token.Token
 	
-	lexer.skipWhitespace();
+	lexer.skipWhitespace()
 
 	switch lexer.ch{
 	
@@ -45,6 +45,8 @@ func (lexer *Lexer) NextToken() token.Token{
 		
 		case ')':
 			tok = newToken(token.RPAREN,lexer.ch)
+		case ';':
+			tok = newToken(token.SEMICOLON, lexer.ch)
 
 
 		case '=':
@@ -159,6 +161,7 @@ func (lexer *Lexer) NextToken() token.Token{
 			}else{
 				tok = newToken(token.POWER,lexer.ch)
 			}
+
 		
 		
 		case 0:

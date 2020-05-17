@@ -2,10 +2,10 @@ package repl
 
 import (
 	"bufio"
+	"compiler/lexer"
+	parser "compiler/parser"
 	"fmt"
 	"io"
-	"compiler/grammar"
-	"compiler/lexer"
 )
 
 const PROMPT = "<meow>^..^<meow>"
@@ -23,11 +23,25 @@ func Start(in io.Reader, out io.Writer){
 
 		line := scanner.Text()
 		lexer := lexer.New(line)
-	
-		for tok := lexer.NextToken();tok.Type != token.EOF; tok = lexer.NextToken(){
-			fmt.Printf("%+v\n",tok)
+		parser := parser.New(lexer)
+
+		program := parser.ParseProgram()
+		if len(parser.Errors()) != 0 {
+			printParserErrors(out, parser.Errors())
+			continue
 		}
+
+		io.WriteString(out, program.String())
+		io.WriteString(out, "\n")
 	}
 
 
+}
+
+func printParserErrors(out io.Writer, errors []string) {
+	io.WriteString(out, "Woops! WE ARE IN TROUBLES!\n")
+	io.WriteString(out, "Stack trace of parser errors:\n")
+	for _, msg := range errors {
+		io.WriteString(out, "\t"+msg+"\n")
+	}
 }

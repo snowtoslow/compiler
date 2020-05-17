@@ -1,0 +1,4 @@
+let isEven = fn(x){if x%2==0{return true}else{return false}}
+
+let fib = fn(x){if n<=1{retunr n} else{return fn(x-1)+fn(x-2)}}
+

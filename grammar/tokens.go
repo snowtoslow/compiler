@@ -11,6 +11,7 @@ const (
 	
 	EOF = "EOF"
 	ILLEGAL ="ILLEGAL"//illegal token
+	SEMICOLON = ";"
 	
 	LBRACKET ="["//left bracket
 	RBRACKET ="]"
